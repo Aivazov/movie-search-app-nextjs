@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image';
 import axios from 'axios';
 import MovieCard from './MovieCard/MovieCard';
+import useDebounce from './helpers/useDebounce';
 
 type Movies = {
   Response: string;
@@ -64,12 +65,14 @@ async function fetchMoviesList({
   const res = await axios.get(
     `https://omdbapi.com/?apikey=${KEY}&s=${searchQuery}`
   );
+  console.log(searchQuery);
+
   if (res.data.Response === 'True') return res.data;
 }
 
 function Main({}: Props) {
   const [movies, setMovies] = useState<Movies>();
-  const [movie, setMovie] = useState<MovieDetail | null>( null);
+  const [movie, setMovie] = useState<MovieDetail | null>(null);
   const [moviesReceived, setMoviesReceived] = useState(0);
 
   const [moviesList, setMoviesList] = useState(0);
@@ -79,10 +82,13 @@ function Main({}: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const debouncedValue = useDebounce<string>(searchQuery, 500);
+
   useEffect(() => {
     if (!searchQuery) return;
     fetchMovies();
-  }, [searchQuery]);
+  }, [debouncedValue]);
+  // }, [searchQuery]);
 
   const fetchMovie = async (omdbId: string) => {
     const res = await axios.get(
