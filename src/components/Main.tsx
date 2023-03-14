@@ -7,13 +7,13 @@ import axios from 'axios';
 import MovieCard from './MovieCard/MovieCard';
 import useDebounce from './helpers/useDebounce';
 
-type Movies = {
+interface IMovies {
   Response: string;
   totalResults: string;
   Search: [];
-};
+}
 
-export type MovieDetail = {
+export interface MovieDetail {
   Poster: string;
   Title: string;
   Year: string;
@@ -27,17 +27,12 @@ export type MovieDetail = {
   Actors: string;
   Language: string;
   Awards: string;
-};
-
-type Error = {};
+}
 
 type Props = {
   error?: {
     // message: any;
   };
-  // movies?: {
-  // Search: {};
-  // };
   prev: any;
   // movieDetailsFromSearch: any;
   movieDetail: {
@@ -71,7 +66,7 @@ async function fetchMoviesList({
 }
 
 function Main({}: Props) {
-  const [movies, setMovies] = useState<Movies>();
+  const [movies, setMovies] = useState<IMovies>();
   const [movie, setMovie] = useState<MovieDetail | null>(null);
   const [moviesReceived, setMoviesReceived] = useState(0);
 
@@ -82,7 +77,7 @@ function Main({}: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const debouncedValue = useDebounce<string>(searchQuery, 500);
+  const debouncedValue = useDebounce<string>(searchQuery, 300);
 
   useEffect(() => {
     if (!searchQuery) return;
