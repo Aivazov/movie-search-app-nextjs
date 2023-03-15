@@ -13,21 +13,27 @@ interface IMovies {
   Search: [];
 }
 
+// export interface MovieDetail {
+//   Poster: string;
+//   Title: string;
+//   Year: string;
+//   Rated: string;
+//   Released: string;
+//   Genre: string;
+//   Director: string;
+//   Runtime: string;
+//   Writer: string;
+//   Plot: string;
+//   Actors: string;
+//   Language: string;
+//   Awards: string;
+// }
+
 export interface MovieDetail {
-  Poster: string;
-  Title: string;
-  Year: string;
-  Rated: string;
-  Released: string;
-  Genre: string;
-  Director: string;
-  Runtime: string;
-  Writer: string;
-  Plot: string;
-  Actors: string;
-  Language: string;
-  Awards: string;
+  [key: string]: string;
 }
+
+// const movieDetail = {} as MovieDetail;
 
 type Props = {
   error?: {
@@ -35,19 +41,19 @@ type Props = {
   };
   prev: any;
   // movieDetailsFromSearch: any;
-  movieDetail: {
-    Poster: string;
-    Title: string;
-    Year: string;
-    Rated: string;
-    Released: string;
-    Genre: string;
-    Writer: string;
-    Plot: string;
-    Actors: string;
-    Language: string;
-    Awards: string;
-  };
+  // movieDetail: {
+  //   Poster: string;
+  //   Title: string;
+  //   Year: string;
+  //   Rated: string;
+  //   Released: string;
+  //   Genre: string;
+  //   Writer: string;
+  //   Plot: string;
+  //   Actors: string;
+  //   Language: string;
+  //   Awards: string;
+  // };
 };
 
 const KEY = '8f4c5e24';

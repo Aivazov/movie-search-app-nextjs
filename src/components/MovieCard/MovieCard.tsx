@@ -3,19 +3,20 @@ import Image from 'next/image';
 
 type Props = {
   movieDetail: {
-    Poster: string;
-    Title: string;
-    Year: string;
-    Rated: string;
-    Released: string;
-    Genre: string;
-    Director: string;
-    Runtime: string;
-    Writer: string;
-    Plot: string;
-    Actors: string;
-    Language: string;
-    Awards: string;
+    [key: string]: string;
+    // Poster: string;
+    // Title: string;
+    // Year: string;
+    // Rated: string;
+    // Released: string;
+    // Genre: string;
+    // Director: string;
+    // Runtime: string;
+    // Writer: string;
+    // Plot: string;
+    // Actors: string;
+    // Language: string;
+    // Awards: string;
   };
 };
 
