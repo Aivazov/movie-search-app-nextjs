@@ -23,19 +23,23 @@ const Home: NextPage = ({}: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="">
-        <Main error={undefined} prev={undefined} movieDetail={{
-          Poster: '',
-          Title: '',
-          Year: '',
-          Rated: '',
-          Released: '',
-          Genre: '',
-          Writer: '',
-          Plot: '',
-          Actors: '',
-          Language: '',
-          Awards: ''
-        }} />
+        <Main
+          error={undefined}
+          prev={undefined}
+          // movieDetail={{
+          // Poster: '',
+          // Title: '',
+          // Year: '',
+          // Rated: '',
+          // Released: '',
+          // Genre: '',
+          // Writer: '',
+          // Plot: '',
+          // Actors: '',
+          // Language: '',
+          // Awards: ''
+          // }}
+        />
         {/* <Main error={undefined} prev={undefined} /> */}
       </main>
     </div>
