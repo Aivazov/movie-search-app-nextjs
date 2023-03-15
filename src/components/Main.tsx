@@ -13,47 +13,15 @@ interface IMovies {
   Search: [];
 }
 
-// export interface MovieDetail {
-//   Poster: string;
-//   Title: string;
-//   Year: string;
-//   Rated: string;
-//   Released: string;
-//   Genre: string;
-//   Director: string;
-//   Runtime: string;
-//   Writer: string;
-//   Plot: string;
-//   Actors: string;
-//   Language: string;
-//   Awards: string;
-// }
-
-export interface MovieDetail {
+export interface IMovieDetail {
   [key: string]: string;
 }
-
-// const movieDetail = {} as MovieDetail;
 
 type Props = {
   error?: {
     // message: any;
   };
   prev: any;
-  // movieDetailsFromSearch: any;
-  // movieDetail: {
-  //   Poster: string;
-  //   Title: string;
-  //   Year: string;
-  //   Rated: string;
-  //   Released: string;
-  //   Genre: string;
-  //   Writer: string;
-  //   Plot: string;
-  //   Actors: string;
-  //   Language: string;
-  //   Awards: string;
-  // };
 };
 
 const KEY = '8f4c5e24';
@@ -73,7 +41,7 @@ async function fetchMoviesList({
 
 function Main({}: Props) {
   const [movies, setMovies] = useState<IMovies>();
-  const [movie, setMovie] = useState<MovieDetail | null>(null);
+  const [movie, setMovie] = useState<IMovieDetail | null>(null);
   const [moviesReceived, setMoviesReceived] = useState(0);
 
   const [moviesList, setMoviesList] = useState(0);
@@ -198,6 +166,7 @@ function Main({}: Props) {
                             width={50}
                             height={50}
                             alt={movie.Title}
+                            placeholder='blur'
                             className="object-cover"
                           />
                         ) : (
