@@ -6,6 +6,7 @@ import Image from 'next/image';
 import axios from 'axios';
 import MovieCard from './MovieCard/MovieCard';
 import useDebounce from './helpers/useDebounce';
+import NoSmallImage from '../../public/static/no_image_small.jpg';
 
 interface IMovies {
   Response: string;
@@ -162,15 +163,16 @@ function Main({}: Props) {
                       <div className="flex flex-row">
                         {movie.Poster === 'N/A' ? (
                           <Image
-                            src="/static/no_image_small.jpg"
+                            src={NoSmallImage}
+                            // src="/static/no_image_small.jpg"
                             width={50}
                             height={50}
                             alt={movie.Title}
-                            placeholder='blur'
+                            placeholder="blur"
                             className="object-cover"
                           />
                         ) : (
-                          <img
+                          <Image
                             width={50}
                             height={50}
                             src={movie.Poster}
