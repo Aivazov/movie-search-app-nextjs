@@ -6,9 +6,6 @@ type Props = {
   };
 };
 
-const notAvailable = 'Not Available';
-const emptyString = '';
-
 export default function Rated({ movieDetail }: Props) {
   return (
     <>

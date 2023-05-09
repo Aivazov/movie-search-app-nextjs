@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import Actors from './Actors';
 import Plot from './Plot';
 import Genre from './Genre';

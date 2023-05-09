@@ -8,9 +8,6 @@ type Props = {
   };
 };
 
-const notAvailable = 'Not Available';
-const emptyString = '';
-
 export default function Poster({ movieDetail }: Props) {
   return (
     <div className="">

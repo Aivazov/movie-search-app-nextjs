@@ -7,7 +7,6 @@ type Props = {
 };
 
 const notAvailable = 'Not Available';
-const emptyString = '';
 
 export default function Released({ movieDetail }: Props) {
   return (

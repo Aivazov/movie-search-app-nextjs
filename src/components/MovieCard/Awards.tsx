@@ -6,9 +6,6 @@ type Props = {
   };
 };
 
-const notAvailable = 'Not Available';
-const emptyString = '';
-
 export default function Awards({ movieDetail }: Props) {
   return (
     <p className="py-3 text-[#d4aa11] md:hidden">

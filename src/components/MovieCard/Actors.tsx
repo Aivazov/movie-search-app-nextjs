@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 
 type Props = {
   movieDetail: {
@@ -8,7 +7,6 @@ type Props = {
 };
 
 const notAvailable = 'Not Available';
-const emptyString = '';
 
 export default function Actors({ movieDetail }: Props) {
   return (
