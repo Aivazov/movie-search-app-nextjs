@@ -7,6 +7,7 @@ import axios from 'axios';
 import MovieCard from './MovieCard/MovieCard';
 import useDebounce from './helpers/useDebounce';
 import NoSmallImage from '../../public/static/no_image_small.jpg';
+import Form from './Form/Form';
 
 interface IMovies {
   Response: string;
@@ -119,6 +120,12 @@ function Main({}: Props) {
   return (
     <div>
       <header className="bg-[#292929]  top-0 left-0 flex justify-center items-center min-h-[64px] px-6 py-3 text-white searchbar-box-shadow">
+        {/* <Form
+          onChange={handeChange}
+          keyUp={handleSubmit}
+          movie={movie}
+          movies={movies}
+        /> */}
         <form
           className="flex-col max-w-[400px] relative w-full"
           onSubmit={(e) => {

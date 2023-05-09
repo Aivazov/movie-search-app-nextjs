@@ -11,7 +11,7 @@ export default function Awards({ movieDetail }: Props) {
     <p className="py-3 text-[#d4aa11] md:hidden">
       <b>
         <i className="">Awards: </i>
-      </b>{' '}
+      </b>
       {movieDetail.Awards}
     </p>
   );
