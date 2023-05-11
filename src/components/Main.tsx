@@ -2,12 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Image from 'next/image';
-import axios from 'axios';
+// import Image from 'next/image';
 import MovieCard from './MovieCard/MovieCard';
 import useDebounce from './helpers/useDebounce';
-import NoSmallImage from '../../public/static/no_image_small.jpg';
-import Form from './Form/Form';
+// import NoSmallImage from '../../public/static/no_image_small.jpg';
+import fetchMovie from '../pages/api/fetchMovie';
+import fetchMoviesList from '../pages/api/fetchMoviesList';
+// import Form from './SearchForm/SearchForm';
+import NoPoster from './SearchForm/NoPoster';
+import Poster from './SearchForm/Poster';
 
 interface IMovies {
   Response: string;
@@ -25,21 +28,6 @@ type Props = {
   };
   prev: any;
 };
-
-const KEY = '8f4c5e24';
-
-async function fetchMoviesList({
-  searchQuery = '',
-  currentPage = 1,
-  pageSize = 12,
-}) {
-  const res = await axios.get(
-    `https://omdbapi.com/?apikey=${KEY}&s=${searchQuery}`
-  );
-  console.log(searchQuery);
-
-  if (res.data.Response === 'True') return res.data;
-}
 
 function Main({}: Props) {
   const [movies, setMovies] = useState<IMovies>();
@@ -61,21 +49,6 @@ function Main({}: Props) {
   }, [debouncedValue]);
   // }, [searchQuery]);
 
-  const fetchMovie = async (omdbId: string) => {
-    const res = await axios.get(
-      `https://omdbapi.com/?apikey=${KEY}&i=${omdbId}`
-    );
-
-    if (res.data.Response !== 'True') {
-      return toast.warning('We found no matches. Please try again');
-    }
-
-    setMoviesReceived(1);
-    setMovie(res.data);
-    // setMovieDetailsFromSearch(res.data);
-    return res.data;
-  };
-
   // const onChangeQuery = (query: string) => {
   //   setSearchQuery(query);
   //   setCurrentPage(1);
@@ -93,7 +66,7 @@ function Main({}: Props) {
     fetchMoviesList(options)
       .then((moviesData) => {
         if (moviesData.length === 0) {
-          return toast.warning('We found no matches. Please try again');
+          return toast.warning('Found no matches. Please try again');
         }
         setMovies(moviesData);
         // fetchMovie();
@@ -158,7 +131,11 @@ function Main({}: Props) {
                 ) => (
                   <div
                     onClick={() => {
-                      fetchMovie(movie.imdbID);
+                      fetchMovie(movie.imdbID).then((data) => {
+                        setMoviesReceived(1);
+                        setMovie(data);
+                        return data;
+                      });
                       // handleDetails();
                       setSearchQuery('');
                       setMoviesList(1);
@@ -169,24 +146,11 @@ function Main({}: Props) {
                     {moviesList === 0 && (
                       <div className="flex flex-row">
                         {movie.Poster === 'N/A' ? (
-                          <Image
-                            src={NoSmallImage}
-                            // src="/static/no_image_small.jpg"
-                            width={50}
-                            height={50}
-                            alt={movie.Title}
-                            placeholder="blur"
-                            className="object-cover"
-                          />
+                          <>
+                            <NoPoster movieDetail={movie} />
+                          </>
                         ) : (
-                          <Image
-                            width={50}
-                            height={50}
-                            src={movie.Poster}
-                            alt={movie.Title}
-                            className="object-cover"
-                            // placeholder="blur"
-                          />
+                          <Poster movieDetail={movie} />
                         )}
                         <div className="ml-4">
                           <h3>{movie.Title}</h3>

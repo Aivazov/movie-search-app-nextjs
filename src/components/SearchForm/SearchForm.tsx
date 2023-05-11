@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 type Props = {
   movieDetail: {
@@ -6,7 +6,7 @@ type Props = {
   };
 };
 
-export default function Form({}: Props) {
+export default function SearchForm({}: Props) {
   return (
     <form
       className="flex-col max-w-[400px] relative w-full"
