@@ -2,10 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import Image from 'next/image';
 import MovieCard from './MovieCard/MovieCard';
 import useDebounce from './helpers/useDebounce';
-// import NoSmallImage from '../../public/static/no_image_small.jpg';
 import fetchMovie from '../pages/api/fetchMovie';
 import fetchMoviesList from '../pages/api/fetchMoviesList';
 // import Form from './SearchForm/SearchForm';
@@ -146,9 +144,7 @@ function Main({}: Props) {
                     {moviesList === 0 && (
                       <div className="flex flex-row">
                         {movie.Poster === 'N/A' ? (
-                          <>
-                            <NoPoster movieDetail={movie} />
-                          </>
+                          <NoPoster movieDetail={movie} />
                         ) : (
                           <Poster movieDetail={movie} />
                         )}
