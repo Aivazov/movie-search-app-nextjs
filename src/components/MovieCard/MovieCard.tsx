@@ -13,11 +13,19 @@ import Released from './Released';
 import Year from './Year';
 import Awards from './Awards';
 
+import checkOnAvailable from '../helpers/checkOnAvailable'
+
 type Props = {
   movieDetail: {
     [key: string]: string;
   };
 };
+
+// const notAvailable = 'N/A';
+
+// const checkOnAvailable = (detail: string, component: any, blank: any) => {
+//   return detail === notAvailable ? blank : component;
+// };
 
 export default function MovieCard({ movieDetail }: Props) {
   return (
@@ -37,27 +45,45 @@ export default function MovieCard({ movieDetail }: Props) {
 
             <Genre movieDetail={movieDetail} />
 
-            {movieDetail.Runtime === 'N/A' ? (
+            {checkOnAvailable(
+              movieDetail.Runtime,
+              <Runtime movieDetail={movieDetail} />,
+              <Blank />
+            )}
+
+            {/* {movieDetail.Runtime === notAvailable ? (
               <Blank />
             ) : (
               <Runtime movieDetail={movieDetail} />
+            )} */}
+
+            {checkOnAvailable(
+              movieDetail.Director,
+              <Director movieDetail={movieDetail} />,
+              <Blank />
             )}
 
-            {movieDetail.Director === 'N/A' ? (
+            {/* {movieDetail.Director === notAvailable ? (
               <Blank />
             ) : (
               <Director movieDetail={movieDetail} />
-            )}
+            )} */}
 
             <Actors movieDetail={movieDetail} />
             <Plot movieDetail={movieDetail} />
             <Language movieDetail={movieDetail} />
 
-            {movieDetail.Awards === 'N/A' ? (
+            {checkOnAvailable(
+              movieDetail.Awards,
+              <Awards movieDetail={movieDetail} />,
+              <Blank />
+            )}
+
+            {/* {movieDetail.Awards === notAvailable ? (
               <Blank />
             ) : (
               <Awards movieDetail={movieDetail} />
-            )}
+            )} */}
           </div>
         </>
       )}
