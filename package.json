@@ -2,6 +2,9 @@
   "name": "movie-search-app-test-task",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,7 +12,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "18.14.6",
+    "@types/node": "^22.0.0",
     "@types/react-dom": "18.0.11",
     "axios": "^1.3.4",
     "eslint": "8.35.0",
