@@ -1,6 +1,4 @@
 import axios from 'axios';
-import {KEY} from './CONSTANTS'
-
 
 async function fetchMoviesList({
   searchQuery = '',
@@ -8,7 +6,7 @@ async function fetchMoviesList({
   // pageSize = 12,
 }) {
   const res = await axios.get(
-    `https://omdbapi.com/?apikey=${KEY}&s=${searchQuery}`
+    `https://omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${searchQuery}`
   );
   // console.log(searchQuery);
 
