@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MovieCard from './MovieCard/MovieCard';
@@ -9,6 +9,7 @@ import fetchMoviesList from '../pages/api/fetchMoviesList';
 // import Form from './SearchForm/SearchForm';
 import NoPoster from './SearchForm/NoPoster';
 import Poster from './SearchForm/Poster';
+import LoadingSpinner from './LoadingSpinner';
 
 interface IMovies {
   Response: string;
@@ -90,7 +91,7 @@ function Main({}: Props) {
 
   return (
     <div>
-      <header className="bg-[#292929]  top-0 left-0 flex justify-center items-center min-h-[64px] px-6 py-3 text-white searchbar-box-shadow">
+      <header className='bg-[#292929]  top-0 left-0 flex justify-center items-center min-h-[64px] px-6 py-3 text-white searchbar-box-shadow'>
         {/* <Form
           onChange={handeChange}
           keyUp={handleSubmit}
@@ -98,25 +99,25 @@ function Main({}: Props) {
           movies={movies}
         /> */}
         <form
-          className="flex-col max-w-[400px] relative w-full"
+          className='flex-col max-w-[400px] relative w-full'
           onSubmit={(e) => {
             e.preventDefault();
           }}
         >
           <input
-            type="text"
-            className="px-6 py-2 text-[1rem] rounded-[3px] text-black w-full outline-none"
-            id="movie-search-box"
-            autoComplete="off"
+            type='text'
+            className='px-6 py-2 text-[1rem] rounded-[3px] text-black w-full outline-none'
+            id='movie-search-box'
+            autoComplete='off'
             autoFocus
-            placeholder="Search movie"
+            placeholder='Search movie'
             value={searchQuery}
             onKeyUp={handleSubmit}
             onChange={handleChange}
           />
 
-          <div className="absolute left-0 top-[100%]  bg-gray-800 max-h-[500px] overflow-y-scroll scrollbar-thin scrollbar-track-gray-900 scrollbar-thumb-[#d4aa11] z-[74] w-full">
-            <div className="search-list-item flex flex-col items-center">
+          <div className='absolute left-0 top-[100%]  bg-gray-800 max-h-[500px] overflow-y-scroll scrollbar-thin scrollbar-track-gray-900 scrollbar-thumb-[#d4aa11] z-[74] w-full'>
+            <div className='search-list-item flex flex-col items-center'>
               {movies?.Search?.map(
                 (
                   movie: {
@@ -139,16 +140,16 @@ function Main({}: Props) {
                       setMoviesList(1);
                     }}
                     key={idx}
-                    className="w-full search-item-info cursor-pointer hover:bg-gray-600 transition-all ease-in-out duration-200"
+                    className='w-full search-item-info cursor-pointer hover:bg-gray-600 transition-all ease-in-out duration-200'
                   >
                     {moviesList === 0 && (
-                      <div className="flex flex-row">
+                      <div className='flex flex-row'>
                         {movie.Poster === 'N/A' ? (
                           <NoPoster movieDetail={movie} />
                         ) : (
                           <Poster movieDetail={movie} />
                         )}
-                        <div className="ml-4">
+                        <div className='ml-4'>
                           <h3>{movie.Title}</h3>
                           <p>{movie.Year}</p>
                         </div>
@@ -163,7 +164,11 @@ function Main({}: Props) {
       </header>
       {/* {error && toast.warning(`Something went wrong: ${error.message}`)} */}
 
+      {/* {isLoading ? (
+        <LoadingSpinner />
+      ) : ( */}
       {moviesReceived === 1 && movie && <MovieCard movieDetail={movie} />}
+      {/* )} */}
     </div>
   );
 }

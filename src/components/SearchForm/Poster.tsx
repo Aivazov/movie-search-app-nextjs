@@ -1,5 +1,4 @@
-import React from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 type Props = {
   movieDetail: {
@@ -9,12 +8,19 @@ type Props = {
 
 export default function Poster({ movieDetail }: Props) {
   return (
-    <Image
+    // <Image
+    //   width={50}
+    //   height={50}
+    //   src={movieDetail.Poster}
+    //   alt={movieDetail.Title}
+    //   className='object-cover'
+    // />
+    <img
       width={50}
       height={50}
       src={movieDetail.Poster}
       alt={movieDetail.Title}
-      className="object-cover"
+      className='object-cover'
     />
   );
 }

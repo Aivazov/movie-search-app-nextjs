@@ -1,5 +1,3 @@
-import React from 'react';
-
 type Props = {
   movieDetail: {
     [key: string]: string;
@@ -9,7 +7,7 @@ type Props = {
 export default function SearchForm({}: Props) {
   return (
     <form
-      className="flex-col max-w-[400px] relative w-full"
+      className='flex-col max-w-[400px] relative w-full'
       onSubmit={(e) => {
         e.preventDefault();
       }}

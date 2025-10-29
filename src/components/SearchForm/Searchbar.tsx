@@ -1,5 +1,3 @@
-import React from 'react';
-
 type Props = {};
 
 export default function Searchbar({}: Props) {
@@ -18,12 +16,12 @@ export default function Searchbar({}: Props) {
 
   return (
     <input
-      type="text"
-      className="px-6 py-2 text-[1rem] rounded-[3px] text-black w-full outline-none"
-      id="movie-search-box"
-      autoComplete="off"
+      type='text'
+      className='px-6 py-2 text-[1rem] rounded-[3px] text-black w-full outline-none'
+      id='movie-search-box'
+      autoComplete='off'
       autoFocus
-      placeholder="Search movie"
+      placeholder='Search movie'
       // value={searchQuery}
       // onKeyUp={handleSubmit}
       // onChange={handleChange}
